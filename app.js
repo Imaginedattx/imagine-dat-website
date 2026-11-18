@@ -1,3 +1,112 @@
+const blackFridayActive = Date.now() < Date.parse("2026-12-27T00:00:00-06:00");
+const etsyCouponUrl = "https://imaginedattx.etsy.com?coupon=SANTA10";
+const saleMessage = 'Black Friday Sale: Save $10 with <strong>SANTA10</strong> at Etsy checkout through December 26.';
+const shopProducts = [
+  [
+    "Hallelujah Sweatshirt",
+    "4614336866",
+    "8e4f7d",
+    "8833905822",
+    "ru8o",
+    "50",
+    "Revelation 19:1 back print, a cross on the sleeve, and free domestic UPS Ground shipping."
+  ],
+  [
+    "But God Psalm 89:8 Sweatshirt",
+    "4620509549",
+    "c13e96",
+    "8884763112",
+    "ltzt",
+    "50–$53",
+    "Comfort Colors crewneck with a sleeve cross and your choice of lettering color."
+  ],
+  [
+    "Saved by Grace Sweatshirt",
+    "4620520058",
+    "a536d6",
+    "8884794786",
+    "meqh",
+    "50–$53",
+    "Comfort Colors crewneck with Ephesians 2:8–9 on the back."
+  ],
+  [
+    "Love Like Jesus Sweatshirt",
+    "4620499103",
+    "2e9abb",
+    "8884679002",
+    "btm2",
+    "45–$47",
+    "Repeated Love Like Jesus lettering on a Gildan crewneck."
+  ],
+  [
+    "The Greatest Gift of All Sweatshirt",
+    "4620499845",
+    "80ae67",
+    "8932461749",
+    "2xuk",
+    "45–$47",
+    "Blue-and-gold Nativity artwork on a Christmas crewneck."
+  ],
+  [
+    "Santa’s Favorite Sweatshirt",
+    "4620477467",
+    "832dbe",
+    "8932284807",
+    "4jol",
+    "45–$47",
+    "Varsity-style lettering with your choice of sweatshirt and lettering colors."
+  ],
+  [
+    "Santa Face Sweatshirt",
+    "4620443048",
+    "321d0e",
+    "8884325028",
+    "nft6",
+    "45–$47",
+    "Smiling Santa graphic on a red or gray crewneck."
+  ],
+  [
+    "North Pole Edition Sweatshirt",
+    "4620507244",
+    "1ed9f3",
+    "8932467629",
+    "4hlf",
+    "45–$47",
+    "Santa featured on a vintage magazine-style Christmas crewneck."
+  ],
+  [
+    "Nutcracker Graphic T-Shirt",
+    "4620508376",
+    "42836d",
+    "8932472705",
+    "dohf",
+    "35",
+    "A colorful Christmas nutcracker on a short-sleeve tee."
+  ],
+  [
+    "Lime Green Grinch T-Shirt",
+    "4620502231",
+    "a622d9",
+    "8884706722",
+    "mcfk",
+    "35",
+    "A lime-green short-sleeve tee with heart-shaped glasses and a Santa hat graphic."
+  ]
+];
+
+function productCards(products) {
+  return products.map(([name, id, directory, image, suffix, price, detail]) => `
+    <article class="card">
+      <div class="card-media"><img src="https://i.etsystatic.com/68095519/r/il/${directory}/${image}/il_600x600.${image}_${suffix}.jpg" alt="${name}" loading="lazy" decoding="async"></div>
+      <div class="card-body">
+        <h3>${name}</h3>
+        <p><strong>$${price}</strong> on Etsy</p>
+        <p>${detail}</p>
+        <a class="btn btn-primary" href="https://www.etsy.com/listing/${id}" target="_blank" rel="noopener noreferrer" aria-label="Buy ${name} on Etsy (opens in a new tab)">Buy on Etsy ↗</a>
+      </div>
+    </article>`).join("");
+}
+
 const pages = {
   home: `
     <section class="hero"><div class="container hero-grid"><div class="hero-copy reveal"><div class="eyebrow">Texas-made creativity</div><h1>You imagine it.<br>We make it <span class="gradient-word">personal.</span></h1><p>Custom apparel, meaningful gifts, and branded merchandise—designed, printed, embroidered, and personalized by Imagine DAT.</p><div class="actions"><a class="btn btn-primary" href="quote.html">Start your project →</a><a class="btn btn-ghost" href="shop.html">Shop the collection →</a></div></div><div class="hero-media reveal"><img class="hero-logo" src="assets/brand-primary.jpg" alt="Imagine DAT — Design, Brand, Create, Elevate"><div class="hero-photo one hero-product"><img src="assets/custom-hoodies-studio.png" alt="Coordinated custom company hoodies with printed logos and sleeve patches"></div><div class="hero-photo two"><img src="assets/printed-pickleballs-detail.jpg" alt="Yellow pickleballs custom printed with a business logo"></div><div class="hero-proof">Real work. Made with care.</div></div></div></section>
@@ -5,7 +114,9 @@ const pages = {
     <section class="section"><div class="container"><div class="section-head"><div><div class="eyebrow">Made by Imagine DAT</div><h2>Ideas you can wear, share, and remember.</h2></div><p>From one-of-a-kind gifts to coordinated team and business orders, every project begins with what you want to say.</p></div><div class="cards"><article class="card"><div class="card-media"><img src="assets/custom-basketball-jerseys.jpg" alt="Front and back of custom blue and pink basketball jerseys"></div><div class="card-body"><span class="card-kicker">Apparel</span><h3>Custom team apparel</h3><p>Distinctive uniforms, group gear, and statement pieces designed around your colors and identity.</p></div></article><article class="card"><div class="card-media"><img src="assets/embroidered-longhorn-towels.jpg" alt="White towels personalized with orange names and Longhorn embroidery"></div><div class="card-body"><span class="card-kicker">Embroidery</span><h3>Details with dimension</h3><p>Names, monograms, logos, and appliqué work with a polished, tactile finish.</p></div></article><article class="card"><div class="card-media"><img src="assets/custom-cap-techniques.jpg" alt="Two custom caps featuring a leather patch and embroidery"></div><div class="card-body"><span class="card-kicker">Branding</span><h3>Unexpected possibilities</h3><p>Mix materials and techniques to create merchandise that feels unmistakably yours.</p></div></article></div></div></section>
     <section class="section section-dark"><div class="container"><div class="section-head"><div><div class="eyebrow">More than merchandise</div><h2>Your vision, across every detail.</h2></div><p>Imagine DAT brings design and production together so your project feels intentional from concept through completion.</p></div><div class="service-strip"><div class="service-mini"><b>Design</b><span>Concepts and artwork prepared for the product.</span></div><div class="service-mini"><b>Print</b><span>Apparel and specialty-product applications.</span></div><div class="service-mini"><b>Embroider</b><span>Logos, lettering, appliqué, and personalization.</span></div><div class="service-mini"><b>Engrave</b><span>Precision personalization for suitable materials.</span></div></div></div></section>
     <section class="section"><div class="container"><div class="section-head"><div><div class="eyebrow">Featured work</div><h2>Made for real people and real moments.</h2></div><a class="btn btn-dark" href="gallery.html">Explore the gallery</a></div><div class="showcase"><article class="showcase-item"><img src="assets/campaign-faith-gold.png" alt="Imagine DAT Faith Collection campaign featuring a white Worship sweatshirt"><div class="showcase-copy"><span class="card-kicker">Printed apparel</span><h3>Faith Collection</h3><p>Discover faith-inspired apparel, including our Hallelujah sweatshirt.</p><a class="btn btn-primary" href="https://www.etsy.com/listing/4614336866" target="_blank" rel="noopener noreferrer" title="Opens Etsy in a new tab">Shop Hallelujah on Etsy →</a></div></article><article class="showcase-item"><img src="assets/full-color-dayna-troy-jug.png" alt="White drinkware customized with a full-color Dayna and Troy homesite design"><div class="showcase-copy"><span class="card-kicker">Full color</span><h3>Color that tells the whole story</h3><p>Photos, illustrations, and vibrant artwork applied to compatible drinkware and similar products.</p></div></article></div></div></section>`,
-  shop: `<section class="page-hero"><div class="container"><div class="eyebrow">Shop Imagine DAT</div><h1>Wear your faith.<br><span class="gradient-word">Make it personal.</span></h1><p>Browse here, choose your size and color on Etsy, and complete your purchase there.</p><p id="checkout-note">Checkout opens on Etsy in a new tab. Close that tab to return to Imagine DAT.</p></div></section><section class="section"><div class="container two-col"><div class="feature-image"><img src="https://i.etsystatic.com/68095519/r/il/8e4f7d/8833905822/il_fullxfull.8833905822_ru8o.jpg" alt="Black Hallelujah sweatshirt with white lettering and Revelation 19:1 across the back"></div><article><div class="eyebrow">Faith Collection</div><h2>Hallelujah Sweatshirt</h2><p><strong>$45 · Free domestic UPS Ground shipping</strong></p><p>“But GOD...” at the front collar, HALLELUJAH and Revelation 19:1 across the back, and a cross on the sleeve.</p><p><strong>Unisex sizes:</strong> XS, S, M, L, XL, 2XL, 3XL<br><strong>Colors:</strong> Black, navy, pink, red, gray, olive green</p><p>Made to order by Imagine DAT. Ships in 1–2 business days. Returns and exchanges accepted within 30 days; buyer pays return shipping. Contact us before ordering for expedited shipping options.</p><a class="btn btn-primary" href="https://www.etsy.com/listing/4614336866" target="_blank" rel="noopener noreferrer" aria-describedby="checkout-note">Buy on Etsy ↗</a><p class="form-note">Select your size and color on Etsy. Current availability and final order details are shown at checkout.</p><p><a href="https://www.etsy.com/shop/ImagineDATTX" target="_blank" rel="noopener noreferrer" aria-describedby="checkout-note">Visit our Etsy shop (opens in a new tab) ↗</a></p></article></div></section>`,
+  shop: `<section class="page-hero"><div class="container"><div class="eyebrow">Shop Imagine DAT</div><h1>Faith &amp; Holiday Apparel</h1><p>Find your design here, then choose your size and color and check out on Etsy.</p>${blackFridayActive ? `<p>${saleMessage}</p><a class="btn btn-primary" href="${etsyCouponUrl}" target="_blank" rel="noopener noreferrer">Shop the Black Friday sale on Etsy ↗</a>` : ""}<p id="checkout-note">Product links open in a new Etsy tab.</p></div></section>
+    <section class="section"><div class="container"><div class="section-head"><h2>Faith Collection</h2></div><div class="cards">${productCards(shopProducts.slice(0,5))}</div></div></section>
+    <section class="section"><div class="container"><div class="section-head"><h2>Holiday Collection</h2></div><div class="cards">${productCards(shopProducts.slice(5))}</div></div></section>`,
   about: `<section class="page-hero"><div class="container"><div class="eyebrow">About Imagine DAT</div><h1>Bold ideas.<br><span class="gradient-word">Personal execution.</span></h1><p>Imagine DAT is a Texas-based creative merchandise business bringing together design, print, embroidery, laser personalization, and branded products.</p></div></section><section class="section"><div class="container two-col"><div class="feature-image"><img src="assets/brand-primary.jpg" alt="Imagine DAT primary logo"></div><div><div class="eyebrow">The idea behind the name</div><h2>Imagine it. We help create DAT.</h2><p>The work spans meaningful gifts, team apparel, business merchandise, event pieces, and custom concepts that do not fit neatly into a catalog.</p><p>The multicolor mark reflects that range: energetic, expressive, modern, and open to possibility. The site uses those colors with restraint so the finished work remains the focus.</p><div class="value-list"><div class="value"><b>Creative</b><br><span>Ideas shaped for the product and purpose.</span></div><div class="value"><b>Personal</b><br><span>Details tailored to the person, team, or brand.</span></div><div class="value"><b>Versatile</b><br><span>Multiple techniques under one creative direction.</span></div><div class="value"><b>Texas-based</b><br><span>Made with care and a hands-on approach.</span></div></div></div></div></section>`,
   services: `<section class="page-hero"><div class="container"><div class="eyebrow">Products & services</div><h1>One idea.<br><span class="gradient-word">Many ways to make it real.</span></h1><p>Explore the core capabilities available for apparel, gifts, organizations, events, and branded merchandise.</p></div></section><section class="section"><div class="container services-list">
   <article class="service-row"><img src="assets/custom-hoodies-studio.png" alt="Coordinated custom company hoodies"><div><span class="service-number">01 / APPAREL</span><h2>Custom apparel</h2><p>Tees, sweatshirts, group gear, and personalized garments designed around your message.</p><a class="btn btn-dark" href="quote.html?service=Custom%20apparel">Discuss apparel</a></div></article>
@@ -55,7 +166,7 @@ function contactForm(){return `<form class="form-card" name="contact" method="PO
 
 function shell(page){
   const current = page === "home" ? "index" : page;
-  document.body.insertAdjacentHTML("afterbegin",`<a class="skip" href="#main">Skip to content</a><div class="announce">Design <span class="dot">•</span> Print <span class="dot">•</span> Embroider <span class="dot">•</span> Laser <span class="dot">—</span> Made personal in Texas</div><header class="site-header"><div class="nav-shell"><a class="brand" href="index.html"><img class="brand-mark" src="assets/brand-monogram.jpg" alt=""><span class="brand-type">IMAGINE <strong>DAT</strong><small>DESIGN · PRINT · EMBROIDER · LASER</small></span></a><button class="menu" aria-expanded="false" aria-label="Open navigation"></button><nav aria-label="Main navigation">${[["index","Home"],["about","About"],["services","Services"],["gallery","Gallery"],["contact","Contact"]].map(([p,n])=>`<a href="${p}.html" ${current===p?'aria-current="page"':''}>${n}</a>`).join("")}<a href="shop.html" ${current==='shop'?'aria-current="page"':''}>Shop</a><a class="mobile-nav-cta" href="quote.html">Request a quote</a></nav><a class="nav-cta" href="quote.html">Request a quote</a></div></header>`);
+  document.body.insertAdjacentHTML("afterbegin",`<a class="skip" href="#main">Skip to content</a>${blackFridayActive ? `<div class="announce"><a href="shop.html" style="color:inherit">${saleMessage}</a></div>` : `<div class="announce">Design <span class="dot">•</span> Print <span class="dot">•</span> Embroider <span class="dot">•</span> Laser <span class="dot">—</span> Made personal in Texas</div>`}<header class="site-header"><div class="nav-shell"><a class="brand" href="index.html"><img class="brand-mark" src="assets/brand-monogram.jpg" alt=""><span class="brand-type">IMAGINE <strong>DAT</strong><small>DESIGN · PRINT · EMBROIDER · LASER</small></span></a><button class="menu" aria-expanded="false" aria-label="Open navigation"></button><nav aria-label="Main navigation">${[["index","Home"],["about","About"],["services","Services"],["gallery","Gallery"],["contact","Contact"]].map(([p,n])=>`<a href="${p}.html" ${current===p?'aria-current="page"':''}>${n}</a>`).join("")}<a href="shop.html" ${current==='shop'?'aria-current="page"':''}>Shop</a><a class="mobile-nav-cta" href="quote.html">Request a quote</a></nav><a class="nav-cta" href="quote.html">Request a quote</a></div></header>`);
   document.getElementById("main").innerHTML=pages[page];
   document.body.insertAdjacentHTML("beforeend",`<section class="cta-band"><div class="container cta-inner"><div><div class="eyebrow">Ready when you are</div><h2>Let’s make something personal.</h2><p>Every email and contact request receives a response within 24 hours.</p></div><a class="btn btn-primary" href="quote.html">Start your project →</a></div></section><footer class="site-footer"><div class="container"><div class="footer-grid"><div><a class="brand" href="index.html"><img class="brand-mark" src="assets/brand-monogram.jpg" alt=""><span class="brand-type">IMAGINE <strong>DAT</strong></span></a><p>Custom merchandise and personalization for meaningful gifts, teams, events, and brands.</p></div><div><b>Explore</b><div class="footer-links"><a href="shop.html" ${current==='shop'?'aria-current="page"':''}>Shop</a><a href="services.html">Products & services</a><a href="gallery.html">Real work</a><a href="about.html">About Imagine DAT</a></div></div><div><b>Start</b><div class="footer-links"><a href="quote.html">Request a quote</a><a href="contact.html">Contact</a></div></div><div><b>Contact</b><div class="footer-links"><span>Tomball, Texas 77377</span><a href="tel:+13462733394">346-273-3394</a><a href="mailto:troyb@imaginedattx.com">troyb@imaginedattx.com</a><span>Mon–Fri · 9 AM–6 PM</span><a href="https://www.instagram.com/imaginedattx" target="_blank" rel="noopener">Instagram @imaginedattx</a><a href="https://www.facebook.com/imaginedattx" target="_blank" rel="noopener">Facebook @imaginedattx</a></div></div></div><div class="footer-bottom"><span>© 2026 Imagine DAT. Made with care in Tomball, Texas.</span><span>Preview redesign · Not connected to the live domain</span></div></div></footer>`);
 }
