@@ -111,7 +111,7 @@ function productCards(products) {
       <div class="card-media"><img src="${src}" alt="${frontBack ? `Front and back of the ${name}` : name}" ${frontBack ? 'style="object-fit:contain; background:#f4f2ee"' : ""} loading="lazy" decoding="async"></div>
       <div class="card-body">
         <h3>${name}</h3>
-        ${blackFridayActive && frontPrintSaleIds.has(id) ? `<p><del>$45</del> <strong>$35</strong> with SANTA10 · S–XL<br><del>$47</del> <strong>$37</strong> with SANTA10 · 2XL–3XL</p>` : blackFridayActive && frontBackPhotos[id] ? `<p><del>$50</del> <strong>$40</strong> with SANTA10${price === "$50" ? "" : " · S–XL<br><del>$53</del> <strong>$43</strong> with SANTA10 · 2XL–3XL"}</p>` : `<p><strong>${price}</strong> on Etsy</p>`}
+        ${blackFridayActive && frontPrintSaleIds.has(id) ? `<p><del>$45</del> <strong>$35</strong> with SANTA10 · S–XL<br><del>$47</del> <strong>$37</strong> with SANTA10 · 2XL–3XL</p>` : blackFridayActive && frontBackPhotos[id] ? `<p><del>$50</del> <strong>$40</strong> with SANTA10${price === "50" ? "" : " · S–XL<br><del>$53</del> <strong>$43</strong> with SANTA10 · 2XL–3XL"}</p>` : `<p><strong>${price}</strong> on Etsy</p>`}
         <p>${detail}</p>
         <a class="btn btn-primary" href="https://www.etsy.com/listing/${id}" target="_blank" rel="noopener noreferrer" aria-label="Buy ${name} on Etsy (opens in a new tab)">Buy on Etsy ↗</a>
       </div>
