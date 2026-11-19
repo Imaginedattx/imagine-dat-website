@@ -100,6 +100,8 @@ const frontBackPhotos = {
   "4620520058": "saved-by-grace-front-back.jpg",
 };
 
+const frontPrintSaleIds = new Set(["4620499103","4620499845","4620477467","4620443048","4620507244"]);
+
 function productCards(products) {
   return products.map(([name, id, directory, image, suffix, price, detail]) => {
     const frontBack = frontBackPhotos[id];
@@ -109,7 +111,7 @@ function productCards(products) {
       <div class="card-media"><img src="${src}" alt="${frontBack ? `Front and back of the ${name}` : name}" ${frontBack ? 'style="object-fit:contain; background:#f4f2ee"' : ""} loading="lazy" decoding="async"></div>
       <div class="card-body">
         <h3>${name}</h3>
-        <p><strong>$${price}</strong> on Etsy</p>
+        ${blackFridayActive && frontPrintSaleIds.has(id) ? `<p><del>$45</del> <strong>$35</strong> with SANTA10 · S–XL<br><del>$47</del> <strong>$37</strong> with SANTA10 · 2XL–3XL</p>` : `<p><strong>${price}</strong> on Etsy</p>`}
         <p>${detail}</p>
         <a class="btn btn-primary" href="https://www.etsy.com/listing/${id}" target="_blank" rel="noopener noreferrer" aria-label="Buy ${name} on Etsy (opens in a new tab)">Buy on Etsy ↗</a>
       </div>
