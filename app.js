@@ -94,17 +94,27 @@ const shopProducts = [
   ]
 ];
 
+const frontBackPhotos = {
+  "4614336866": "hallelujah-front-back.jpg",
+  "4620509549": "but-god-front-back.jpg",
+  "4620520058": "saved-by-grace-front-back.jpg",
+};
+
 function productCards(products) {
-  return products.map(([name, id, directory, image, suffix, price, detail]) => `
+  return products.map(([name, id, directory, image, suffix, price, detail]) => {
+    const frontBack = frontBackPhotos[id];
+    const src = frontBack ? `assets/${frontBack}` : `https://i.etsystatic.com/68095519/r/il/${directory}/${image}/il_600x600.${image}_${suffix}.jpg`;
+    return `
     <article class="card">
-      <div class="card-media"><img src="https://i.etsystatic.com/68095519/r/il/${directory}/${image}/il_600x600.${image}_${suffix}.jpg" alt="${name}" loading="lazy" decoding="async"></div>
+      <div class="card-media"><img src="${src}" alt="${frontBack ? `Front and back of the ${name}` : name}" ${frontBack ? 'style="object-fit:contain; background:#f4f2ee"' : ""} loading="lazy" decoding="async"></div>
       <div class="card-body">
         <h3>${name}</h3>
         <p><strong>$${price}</strong> on Etsy</p>
         <p>${detail}</p>
         <a class="btn btn-primary" href="https://www.etsy.com/listing/${id}" target="_blank" rel="noopener noreferrer" aria-label="Buy ${name} on Etsy (opens in a new tab)">Buy on Etsy ↗</a>
       </div>
-    </article>`).join("");
+    </article>`;
+  }).join("");
 }
 
 const pages = {
