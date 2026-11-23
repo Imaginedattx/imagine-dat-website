@@ -10,7 +10,7 @@ const shopProducts = [
     "ru8o",
     "50",
     "Inspired by the shout of praise in Revelation 19:1, this washed gray Gildan sweatshirt features oversized white HALLELUJAH lettering that stretches across the back and onto the sleeves. The scripture reference sits just below, with small “BUT GOD” lettering near the front neckline and a white cross near the cuff.",
-    `<p><strong>Style</strong> | Faith-inspired sweatshirt with a notched neckline and a statement back graphic<br>
+    `<p><span style="display:grid; grid-template-columns:max-content minmax(0,1fr); column-gap:.3em"><span><strong>Style</strong> |</span><span>Faith-inspired sweatshirt with a notched neckline and a statement back graphic</span></span>
     <strong>Color</strong> | Washed gray with white lettering<br>
     <strong>Brand</strong> | Gildan, customized by Imagine DAT</p>
     <div class="product-styling">
