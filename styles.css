@@ -75,6 +75,10 @@ h1 { font-size:clamp(54px,6.2vw,92px); line-height:.95; letter-spacing:-.055em; 
 .card-kicker { color:var(--pink); font-size:9px; letter-spacing:.17em; font-weight:800; text-transform:uppercase; }
 .card h3 { font-size:22px; line-height:1.1; margin:10px 0; }
 .card p { color:#6a6a70; font-size:14px; }
+.product-styling { margin:0 0 18px; padding-top:12px; border-top:1px solid #e5e2e3; }
+.product-styling h4 { margin:0 0 6px; font-size:14px; }
+.product-styling ul { margin:0; padding-left:18px; color:#6a6a70; font-size:14px; }
+.product-styling li + li { margin-top:6px; }
 .service-strip { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:#303037; border:1px solid #303037; border-radius:var(--radius); overflow:hidden; }
 .service-mini { padding:30px; background:#16161c; }
 .service-mini b { display:block; color:#fff; margin-bottom:8px; }
