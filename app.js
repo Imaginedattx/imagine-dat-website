@@ -10,25 +10,31 @@ const shopProducts = [
     "ru8o",
     "50",
     "Inspired by the shout of praise in Revelation 19:1, this washed gray Gildan sweatshirt features oversized white HALLELUJAH lettering that stretches across the back and onto the sleeves. The scripture reference sits just below, with small “BUT GOD” lettering near the front neckline and a white cross near the cuff.",
-    `<p><span style="display:grid; grid-template-columns:max-content minmax(0,1fr); column-gap:.3em"><span><strong>Style</strong> |</span><span>Faith-inspired sweatshirt with a notched neckline and a statement back graphic</span></span>
-    <strong>Color</strong> | Washed gray with white lettering<br>
-    <strong>Brand</strong> | Gildan, customized by Imagine DAT</p>
-    <div class="product-styling">
-      <h4>Styling Suggestions</h4>
-      <ul>
-        <li>Layer it over a shirt with a colorful stand-up collar, as shown, and pair it with straight-leg jeans and white sneakers.</li>
-        <li>Wear it over a crisp white collared shirt with black jeans and loafers for church or brunch.</li>
-      </ul>
-    </div>`
+    productDetails([
+      ["Style","Faith-inspired sweatshirt with a notched neckline and a statement back graphic"],
+      ["Color","Washed gray with white lettering"],
+      ["Brand","Gildan, customized by Imagine DAT"]
+    ], [
+      "Layer it over a shirt with a colorful stand-up collar, as shown, and pair it with straight-leg jeans and white sneakers.",
+      "Wear it over a crisp white collared shirt with black jeans and loafers for church or brunch."
+    ])
   ],
   [
-    "But God Psalm 89:8 Sweatshirt",
+    "BUT GOD | Psalm 89:8 Gildan Sweatshirt",
     "4620509549",
     "c13e96",
     "8884763112",
     "ltzt",
     "50–$53",
-    "Comfort Colors crewneck with a sleeve cross and your choice of lettering color."
+    "A reminder of God’s strength and faithfulness, inspired by Psalm 89:8. This black Gildan sweatshirt features oversized white BUT GOD lettering that stretches across the back and onto the sleeves, with Psalm 89:8 underneath. Small “saved by grace” script sits beside the front neckline, and a white cross accents one cuff.",
+    productDetails([
+      ["Style","Faith-inspired sweatshirt with a notched front neckline"],
+      ["Color","Black with white lettering"],
+      ["Brand","Gildan, customized by Imagine DAT"]
+    ], [
+      "Layer over a white ruffled collar, as shown, and pair with straight-leg jeans and loafers.",
+      "Wear with light-wash denim and white sneakers for a casual weekend look."
+    ])
   ],
   [
     "Saved by Grace Sweatshirt",
@@ -67,13 +73,21 @@ const shopProducts = [
     "Varsity-style lettering with your choice of sweatshirt and lettering colors."
   ],
   [
-    "Santa Face Sweatshirt",
+    "Jolly Santa Face | Gildan Christmas Sweatshirt",
     "4620443048",
     "321d0e",
     "8884325028",
     "nft6",
     "45–$47",
-    "Smiling Santa graphic on a red or gray crewneck."
+    "A jolly, smiling Santa in a simple outline makes this Gildan crewneck easy to wear all season. Choose bright red with a white Santa for a classic Christmas look or heather gray with a red Santa for a more casual feel. The oversized graphic is centered on the front, with Santa’s signature hat, curled mustache, and full beard.",
+    productDetails([
+      ["Style","Long-sleeve crewneck with a front Santa graphic"],
+      ["Color Options","Red with white artwork or heather gray with red artwork"],
+      ["Brand","Gildan, customized by Imagine DAT"]
+    ], [
+      "Layer the red sweatshirt over a white collar and add a sparkly necklace for a holiday get-together.",
+      "Pair the gray sweatshirt with a denim collar, black jeans, and a red accessory for an easy Christmas outfit."
+    ])
   ],
   [
     "North Pole Edition Sweatshirt",
@@ -94,13 +108,21 @@ const shopProducts = [
     "A colorful Christmas nutcracker on a short-sleeve tee."
   ],
   [
-    "Lime Green Grinch T-Shirt",
+    "Festive Grinch | Lime Green Christmas Graphic Tee",
     "4620502231",
     "a622d9",
     "8884706722",
     "mcfk",
     "35",
-    "A lime-green short-sleeve tee with heart-shaped glasses and a Santa hat graphic."
+    "This bright lime green tee features the Grinch in a Santa hat and pink heart-shaped sunglasses, blowing a big pink bubble. The graphic has a glitter-look finish that adds a little extra sparkle to the design. It’s a fun pick for Christmas movie night, a holiday shirt day, or a casual get-together.",
+    productDetails([
+      ["Style","Short-sleeve crewneck with a centered front graphic"],
+      ["Color","Lime green with hot pink, red, and white accents"],
+      ["Shop","Imagine DAT"]
+    ], [
+      "Layer over a hot pink collar and add a sparkly necklace, as shown in the photo.",
+      "Pair with black jeans and white sneakers, or wear it with plaid pajama pants for Christmas movie night."
+    ])
   ]
 ];
 
@@ -111,6 +133,17 @@ const frontBackPhotos = {
 };
 
 const frontPrintSaleIds = new Set(["4620499103","4620499845","4620477467","4620443048","4620507244"]);
+
+function productDetails(rows, suggestions) {
+  return `<p>${rows.map(([label, value]) => `
+      <span style="display:grid; grid-template-columns:max-content minmax(0,1fr); column-gap:.3em">
+        <span><strong>${label}</strong> |</span><span>${value}</span>
+      </span>`).join("")}</p>
+    <div class="product-styling">
+      <h4>Styling Suggestions</h4>
+      <ul>${suggestions.map(suggestion => `<li>${suggestion}</li>`).join("")}</ul>
+    </div>`;
+}
 
 function productCards(products) {
   return products.map(([name, id, directory, image, suffix, price, detail, styling = ""]) => {
