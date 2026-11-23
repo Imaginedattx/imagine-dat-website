@@ -46,31 +46,55 @@ const shopProducts = [
     "Comfort Colors crewneck with Ephesians 2:8–9 on the back."
   ],
   [
-    "Love Like Jesus Sweatshirt",
+    "Love Like Jesus | Blue Gildan Crewneck Sweatshirt",
     "4620499103",
     "2e9abb",
     "8884679002",
     "btm2",
     "45–$47",
-    "Repeated Love Like Jesus lettering on a Gildan crewneck."
+    "A simple reminder to show others the same love Jesus shows us. This soft blue Gildan crewneck features “LOVE LIKE JESUS” repeated in seven rows of white, handwritten-style lettering across the front. It’s an easy layer for Bible study, weekend errands, or coffee with a friend.",
+    productDetails([
+      ["Style", "Long-sleeve crewneck with a stacked front graphic"],
+      ["Color", "Soft blue with white lettering"],
+      ["Brand", "Gildan, customized by Imagine DAT"]
+    ], [
+      "Layer over a blue-and-white striped collar, as shown, and pair with dark jeans and loafers.",
+      "Roll the cuffs and wear with straight-leg jeans and white sneakers for an everyday look."
+    ])
   ],
   [
-    "The Greatest Gift of All Sweatshirt",
+    "The Greatest Gift of All | Nativity Christmas Long-Sleeve Tee",
     "4620499845",
     "80ae67",
     "8932461749",
     "2xuk",
     "45–$47",
-    "Blue-and-gold Nativity artwork on a Christmas crewneck."
+    "Celebrate the birth of Jesus with this white long-sleeve tee featuring a hand-drawn-style Nativity scene in blue and golden yellow. The Star of Bethlehem shines above the manger, and “The Greatest Gift of All” is written in navy script underneath. It’s an easy piece to wear for a church Christmas gathering or a family get-together.",
+    productDetails([
+      ["Style", "Long-sleeve crewneck with a centered Nativity graphic"],
+      ["Color", "White with blue and golden yellow artwork"],
+      ["Shop", "Imagine DAT"]
+    ], [
+      "Layer over a blue-and-white striped collar, as shown, and pair with dark jeans and flats.",
+      "Roll the cuffs and wear with straight-leg jeans and white sneakers for a casual holiday look."
+    ])
   ],
   [
-    "Santa’s Favorite Sweatshirt",
+    "Santa’s Favorite | White Gildan Christmas Sweatshirt",
     "4620477467",
     "832dbe",
     "8932284807",
     "4jol",
     "45–$47",
-    "Varsity-style lettering with your choice of sweatshirt and lettering colors."
+    "Claim your spot on Santa’s list with this white Gildan crewneck. “Santa’s Favorite” is printed across the chest in bold varsity-style lettering, with an arched “Santa’s” and “Favorite” underneath. Choose classic forest green or festive red with a distressed finish.",
+    productDetails([
+      ["Style", "Long-sleeve crewneck with a centered front graphic"],
+      ["Lettering Options", "Forest green or distressed red on white"],
+      ["Brand", "Gildan, customized by Imagine DAT"]
+    ], [
+      "Layer the green version over a denim collar and pair with dark jeans and white sneakers.",
+      "Dress up the red version with a matching red collar, a pendant necklace, and black jeans for a holiday get-together."
+    ])
   ],
   [
     "Jolly Santa Face | Gildan Christmas Sweatshirt",
@@ -99,13 +123,21 @@ const shopProducts = [
     "Santa featured on a vintage magazine-style Christmas crewneck."
   ],
   [
-    "Nutcracker Graphic T-Shirt",
+    "Colorful Nutcracker | Charcoal Christmas Graphic Tee",
     "4620508376",
     "42836d",
     "8932472705",
     "dohf",
     "35",
-    "A colorful Christmas nutcracker on a short-sleeve tee."
+    "This charcoal gray tee puts a playful spin on the classic Christmas nutcracker. The front graphic features a bright blue uniform with gold accents and leopard-print trim, set against a pink-and-red diamond backdrop. Wear it for a holiday lunch, a Christmas market outing, or a festive shirt day.",
+    productDetails([
+      ["Style", "Short-sleeve crewneck with a centered nutcracker graphic"],
+      ["Color", "Charcoal gray with pink, red, blue, and gold accents"],
+      ["Shop", "Imagine DAT"]
+    ], [
+      "Layer over a bright red collar and add a sparkly necklace, as shown.",
+      "Pair with black jeans and red flats to pick up the colors in the graphic."
+    ])
   ],
   [
     "Festive Grinch | Lime Green Christmas Graphic Tee",
