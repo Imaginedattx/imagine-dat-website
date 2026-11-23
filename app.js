@@ -3,13 +3,19 @@ const etsyCouponUrl = "https://imaginedattx.etsy.com?coupon=SANTA10";
 const saleMessage = 'Black Friday Sale: Save $10 with <strong>SANTA10</strong> at Etsy checkout through December 26.';
 const shopProducts = [
   [
-    "Hallelujah Sweatshirt",
+    "HALLELUJAH | Revelation 19:1 Gildan Sweatshirt",
     "4614336866",
     "8e4f7d",
     "8833905822",
     "ru8o",
     "50",
-    "Revelation 19:1 back print, a cross on the sleeve, and free domestic UPS Ground shipping."
+    "Inspired by the shout of praise in Revelation 19:1, this washed gray Gildan sweatshirt features oversized white HALLELUJAH lettering that stretches across the back and onto the sleeves. The scripture reference sits just below, with small “BUT GOD” lettering near the front neckline and a white cross near the cuff.",
+    `<p>Style | Faith-inspired sweatshirt with a notched neckline and a statement back graphic<br>
+    Color | Washed gray with white lettering<br>
+    Brand | Gildan, customized by Imagine DAT</p>
+    <p><strong>Styling Suggestions</strong></p>
+    <p>Layer over a colorful stand-up collar, as shown, and pair with straight-leg jeans and white sneakers.</p>
+    <p>Wear over a crisp white collar with black jeans and loafers for church or brunch.</p>`
   ],
   [
     "But God Psalm 89:8 Sweatshirt",
@@ -103,7 +109,7 @@ const frontBackPhotos = {
 const frontPrintSaleIds = new Set(["4620499103","4620499845","4620477467","4620443048","4620507244"]);
 
 function productCards(products) {
-  return products.map(([name, id, directory, image, suffix, price, detail]) => {
+  return products.map(([name, id, directory, image, suffix, price, detail, styling = ""]) => {
     const frontBack = frontBackPhotos[id];
     const src = frontBack ? `assets/${frontBack}` : `https://i.etsystatic.com/68095519/r/il/${directory}/${image}/il_600x600.${image}_${suffix}.jpg`;
     return `
@@ -112,7 +118,7 @@ function productCards(products) {
       <div class="card-body">
         <h3>${name}</h3>
         ${blackFridayActive && frontPrintSaleIds.has(id) ? `<p><del>$45</del> <strong>$35</strong> with SANTA10 · S–XL<br><del>$47</del> <strong>$37</strong> with SANTA10 · 2XL–3XL</p>` : blackFridayActive && frontBackPhotos[id] ? `<p><del>$50</del> <strong>$40</strong> with SANTA10${price === "50" ? "" : " · S–XL<br><del>$53</del> <strong>$43</strong> with SANTA10 · 2XL–3XL"}</p>` : `<p><strong>${price}</strong> on Etsy</p>`}
-        <p>${detail}</p>
+        <p>${detail}</p>${styling}
         <a class="btn btn-primary" href="https://www.etsy.com/listing/${id}" target="_blank" rel="noopener noreferrer" aria-label="Buy ${name} on Etsy (opens in a new tab)">Buy on Etsy ↗</a>
       </div>
     </article>`;
